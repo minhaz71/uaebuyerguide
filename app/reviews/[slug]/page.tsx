@@ -211,7 +211,17 @@ export default async function ReviewPage({ params }: ReviewPageProps) {
           {site.contentSections.map((section) => (
             <div className="content-section" key={section.title}>
               <h2>{section.title}</h2>
-              <p>{section.body}</p>
+              <p>
+                {section.body}
+                {section.link ? (
+                  <>
+                    {" "}
+                    <a href={section.link.href} target="_blank" rel="noreferrer">
+                      {section.link.label}
+                    </a>
+                  </>
+                ) : null}
+              </p>
             </div>
           ))}
         </section>

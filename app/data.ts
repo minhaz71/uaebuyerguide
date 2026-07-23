@@ -55,6 +55,7 @@ export type GuideSite = {
   contentSections?: {
     title: string;
     body: string;
+    link?: ReviewLink;
   }[];
 };
 
@@ -72,6 +73,7 @@ export type Resource = {
   articleTitle: string;
   paragraphs: string[];
   checks: string[];
+  contextualLink?: ReviewLink;
 };
 
 const slugify = (value: string) =>
@@ -362,6 +364,80 @@ const specialtySeoOverrides: Record<string, Partial<GuideSite>> = {
         body:
           "The page is best suited for searches such as vape delivery stores UAE, pod device store Dubai, TEREA comparison UAE, nicotine product shops UAE, and adult specialty retail websites.",
       },
+      {
+        title: "Related flavor reading",
+        body:
+          "Readers comparing TEREA options often want a wider view of which flavor families are popular with IQOS ILUMA users before opening a store page.",
+        link: {
+          label: "Most Popular IQOS TEREA Flavors for Iluma",
+          href: "https://medium.com/@relxdubai1/most-popular-iqos-terea-flavors-for-iluma-dc0ed006ba40?source=user_profile_page---------2-------------8c5f10e83fa5----------------------",
+        },
+      },
+    ],
+  },
+  "rpodsdubai-ae": {
+    contentSections: [
+      {
+        title: "Storage checks in UAE weather",
+        body:
+          "RELX and JUUL-style pod shoppers in the UAE should think about heat, humidity, and storage before comparing device or pod options.",
+        link: {
+          label: "Heat & Humidity: Storing RELX Pods and JUUL PODS Sticks in the UAE",
+          href: "https://medium.com/@relxdubai1/heat-humidity-storing-relx-pods-and-juul-pods-sticks-in-the-uae-7d6f9a95afbe?source=user_profile_page---------0-------------8c5f10e83fa5----------------------",
+        },
+      },
+    ],
+  },
+  "vaporkit-ae": {
+    contentSections: [
+      {
+        title: "Heat-not-burn launch context",
+        body:
+          "VaporKit is most relevant when readers are researching heat-not-burn devices, IQOS-compatible products, and newer UAE specialty shopping options.",
+        link: {
+          label: "The Heat-Not-Burn Revolution Arrives: Announcing the Launch of Vaporkit.ae",
+          href: "https://medium.com/@relxdubai1/the-heat-not-burn-revolution-arrives-announcing-the-launch-of-vaporkit-ae-40f1fb3c8a6a?source=user_profile_page---------1-------------8c5f10e83fa5----------------------",
+        },
+      },
+    ],
+  },
+  "podsvibe-ae": {
+    contentSections: [
+      {
+        title: "Device maintenance context",
+        body:
+          "Pod-device shoppers should compare more than product names; airflow, sealing, dust, and UAE heat can affect everyday device performance.",
+        link: {
+          label: "RELX Infinity 2 Cleaning Guide in UAE: Keep Your Device Smooth and Long Lasting",
+          href: "https://medium.com/@relxdubai1/relx-infinity-2-cleaning-guide-in-uae-keep-your-device-smooth-and-long-lasting-0e786662121f?source=user_profile_page---------3-------------8c5f10e83fa5----------------------",
+        },
+      },
+    ],
+  },
+  "tereaheetsdubai-ae": {
+    contentSections: [
+      {
+        title: "Tourist flavor comparison",
+        body:
+          "TEREA and HEETS-focused shoppers visiting Dubai often compare familiar tobacco-style options before checking availability and delivery details.",
+        link: {
+          label: "TEREA Regular Flavors Collection in UAE: Complete Guide for Tourists",
+          href: "https://medium.com/@relxdubai1/terea-regular-flavors-collection-in-uae-complete-guide-for-tourists-a086e9197ec2?source=user_profile_page---------4-------------8c5f10e83fa5----------------------",
+        },
+      },
+    ],
+  },
+  "podsxpress-ae": {
+    contentSections: [
+      {
+        title: "Pod strength reading",
+        body:
+          "Before comparing pod delivery stores, adult shoppers may want to understand how strength, format, and product positioning differ across pod systems.",
+        link: {
+          label: "What is the Unique Facts About RELX Pod Pro 18mg?",
+          href: "https://medium.com/@relxdubai1/what-is-the-unique-facts-about-relx-pod-pro-18mg-801b67b71168?source=user_profile_page---------5-------------8c5f10e83fa5----------------------",
+        },
+      },
     ],
   },
 };
@@ -410,22 +486,40 @@ const specialtyGuideSites: GuideSite[] = specialtyDomains.map(([name, url, categ
   };
 });
 
-const newsGuideSites: GuideSite[] = newsDomains.map(([name, url, bestFor]) => ({
-  name,
-  slug: siteSlug(name),
-  category: "Business & Local Media",
-  url,
-  location: "UAE",
-  summary: `${name} is listed as a ${bestFor} for readers who want useful UAE websites beyond shopping.`,
-  bestFor: `${bestFor}.`,
-  whyUseful:
-    "It can help readers discover UAE-focused headlines, local stories, publishing updates, and business information in one place.",
-  pros: ["Local publishing focus", "Useful for daily reading", "Easy to compare with other media websites"],
-  thingsToCheck: ["Publishing frequency", "Editorial sections", "Contact details", "Advertising or guest-post policy"],
-  links: [
-    { label: "Visit Website", href: url },
-  ],
-}));
+const newsGuideSites: GuideSite[] = newsDomains.map(([name, url, bestFor]) => {
+  const slug = siteSlug(name);
+
+  return {
+    name,
+    slug,
+    category: "Business & Local Media",
+    url,
+    location: "UAE",
+    summary: `${name} is listed as a ${bestFor} for readers who want useful UAE websites beyond shopping.`,
+    bestFor: `${bestFor}.`,
+    whyUseful:
+      "It can help readers discover UAE-focused headlines, local stories, publishing updates, and business information in one place.",
+    pros: ["Local publishing focus", "Useful for daily reading", "Easy to compare with other media websites"],
+    thingsToCheck: ["Publishing frequency", "Editorial sections", "Contact details", "Advertising or guest-post policy"],
+    links: [
+      { label: "Visit Website", href: url },
+    ],
+    contentSections:
+      slug === "newsvista360-ae"
+        ? [
+            {
+              title: "Local business discovery context",
+              body:
+                "Readers using UAE news portals for local discovery may also compare business-resource hubs when they need trusted local brands, services, and useful website references.",
+              link: {
+                label: "Discover the UAE's Premier Business Directory: Your Gateway to Trusted Local Brands",
+                href: "https://medium.com/@relxdubai1/discover-the-uaes-premier-business-directory-your-gateway-to-trusted-local-brands-922c269fd31a?source=user_profile_page---------6-------------8c5f10e83fa5----------------------",
+              },
+            },
+          ]
+        : undefined,
+  };
+});
 
 export const guideSites: GuideSite[] = [
   ...editorialGuideSites,
@@ -444,187 +538,77 @@ export const guideCategories: GuideCategory[] = [
   "Business & Local Media",
 ];
 
-const emirates = ["Dubai", "Abu Dhabi", "Sharjah", "Ajman", "Ras Al Khaimah", "Fujairah"];
+const realResourceEntries: Array<
+  Omit<Resource, "slug" | "rating" | "description" | "articleTitle" | "paragraphs" | "checks">
+> = [
+  { name: "Visit Dubai Places to Visit", category: "Hotel", emirate: "Dubai", area: "Dubai", url: "https://www.visitdubai.com/en/places-to-visit", bestFor: "official Dubai trip planning", highlights: ["Official tourism source", "Attraction planning", "Hotel-area research"] },
+  { name: "Visit Abu Dhabi Where to Stay", category: "Hotel", emirate: "Abu Dhabi", area: "Abu Dhabi", url: "https://visitabudhabi.ae/en/plan-your-trip/where-to-stay", bestFor: "Abu Dhabi hotel planning", highlights: ["Official tourism source", "Stay planning", "Area guidance"] },
+  { name: "Booking.com UAE Hotels", category: "Hotel", emirate: "UAE", area: "UAE-wide", url: "https://www.booking.com/country/ae.html", bestFor: "hotel availability comparison", highlights: ["Availability filters", "Guest reviews", "Booking comparison"] },
+  { name: "Tripadvisor UAE Hotels", category: "Hotel", emirate: "UAE", area: "UAE-wide", url: "https://www.tripadvisor.com/Hotels-g294012-United_Arab_Emirates-Hotels.html", bestFor: "hotel review research", highlights: ["Traveler reviews", "Area comparisons", "Trip planning"] },
 
-const resourceUrls: Record<ResourceCategory, string[]> = {
-  Hotel: [
-    "https://www.visitdubai.com/en/places-to-visit",
-    "https://visitabudhabi.ae/en/plan-your-trip/where-to-stay",
-    "https://www.booking.com/country/ae.html",
-    "https://www.tripadvisor.com/Hotels-g294012-United_Arab_Emirates-Hotels.html",
-  ],
-  "City Place": [
-    "https://www.visitdubai.com/en/places-to-visit",
-    "https://visitabudhabi.ae/en/where-to-go",
-    "https://www.sharjahtourism.ae/",
-    "https://visitrasalkhaimah.com/",
-  ],
-  Restaurant: [
-    "https://www.timeoutdubai.com/restaurants",
-    "https://www.visitdubai.com/en/things-to-do/eat-and-drink",
-    "https://www.tripadvisor.com/Restaurants-g294012-United_Arab_Emirates.html",
-    "https://www.zomato.com/uae",
-  ],
-  Hospital: [
-    "https://www.dha.gov.ae/en",
-    "https://www.doh.gov.ae/en",
-    "https://u.ae/en/information-and-services/health-and-fitness",
-  ],
-  "Shopping Mall": [
-    "https://www.visitdubai.com/en/things-to-do/shopping",
-    "https://thedubaimall.com/",
-    "https://www.malloftheemirates.com/en",
-    "https://www.yasisland.com/en",
-  ],
-  "Government Service": [
-    "https://u.ae/en",
-    "https://gdrfad.gov.ae/en",
-    "https://icp.gov.ae/en/",
-  ],
-  "Bank & Payments": [
-    "https://www.centralbank.ae/en/",
-    "https://www.emiratesnbd.com/en",
-    "https://www.adcb.com/en/personal/",
-    "https://www.dib.ae/",
-  ],
-  "Travel & Transport": [
-    "https://www.rta.ae/wps/portal/rta/ae/home",
-    "https://www.dubaiairports.ae/",
-    "https://www.etihadrail.ae/",
-  ],
-  Education: [
-    "https://www.moe.gov.ae/en/pages/home.aspx",
-    "https://www.adek.gov.ae/",
-    "https://www.caa.ae/",
-  ],
-  "Real Estate": [
-    "https://dubailand.gov.ae/en/",
-    "https://www.bayut.com/",
-    "https://www.propertyfinder.ae/",
-    "https://www.dubizzle.com/property-for-rent/",
-  ],
-};
+  { name: "Visit Dubai Attractions", category: "City Place", emirate: "Dubai", area: "Dubai", url: "https://www.visitdubai.com/en/places-to-visit", bestFor: "Dubai attraction discovery", highlights: ["Official attractions", "Family planning", "Visitor information"] },
+  { name: "Visit Abu Dhabi Where to Go", category: "City Place", emirate: "Abu Dhabi", area: "Abu Dhabi", url: "https://visitabudhabi.ae/en/where-to-go", bestFor: "Abu Dhabi city places", highlights: ["Official destination guide", "Culture stops", "Family outings"] },
+  { name: "Sharjah Tourism", category: "City Place", emirate: "Sharjah", area: "Sharjah", url: "https://www.sharjahtourism.ae/", bestFor: "Sharjah heritage and attractions", highlights: ["Official emirate guide", "Museums and culture", "Travel planning"] },
+  { name: "Visit Ras Al Khaimah", category: "City Place", emirate: "Ras Al Khaimah", area: "Ras Al Khaimah", url: "https://visitrasalkhaimah.com/", bestFor: "RAK mountain and outdoor trips", highlights: ["Official tourism guide", "Adventure planning", "Hotel-area research"] },
 
-const resourceBlueprints: Record<
-  ResourceCategory,
-  {
-    count: number;
-    nouns: string[];
-    areas: string[];
-    bestFor: string[];
-    highlights: string[];
-  }
-> = {
-  Hotel: {
-    count: 30,
-    nouns: ["Harbour", "Palm", "Creek", "Marina", "Oasis", "Skyline", "Pearl", "Sands", "Crown", "Dunes"],
-    areas: ["Downtown", "Business Bay", "Jumeirah", "Corniche", "Al Majaz", "City Centre"],
-    bestFor: ["business stays", "family trips", "weekend breaks", "airport access", "beach holidays"],
-    highlights: ["Concierge desk", "Breakfast options", "Family rooms", "Airport transfers", "Meeting space"],
-  },
-  "City Place": {
-    count: 30,
-    nouns: ["Heritage", "Waterfront", "Garden", "Museum", "Promenade", "Cultural", "Lagoon", "Fort", "Gallery", "Island"],
-    areas: ["Old Town", "Waterfront", "Heritage District", "Arts Quarter", "Central Park", "Marina Walk"],
-    bestFor: ["day trips", "family visits", "photos", "culture stops", "outdoor walks"],
-    highlights: ["Visitor-friendly", "Photo spots", "Nearby cafes", "Weekend suitable", "Easy access"],
-  },
-  Restaurant: {
-    count: 30,
-    nouns: ["Spice", "Majlis", "Bistro", "Grill", "Kitchen", "Table", "Saffron", "Seafood", "Terrace", "Ember"],
-    areas: ["JLT", "Al Barsha", "Khalidiya", "Al Nahda", "Muweilah", "Corniche Road"],
-    bestFor: ["casual dining", "family meals", "business lunches", "late dinners", "group bookings"],
-    highlights: ["Dine-in", "Takeaway", "Vegetarian choices", "Group tables", "Delivery nearby"],
-  },
-  Hospital: {
-    count: 30,
-    nouns: ["Care", "Prime", "Life", "Wellness", "Med", "Health", "Aster", "Emirates", "Family", "Specialist"],
-    areas: ["Healthcare City", "Al Qusais", "Mussafah", "Al Khan", "Al Jurf", "Nakheel"],
-    bestFor: ["family care", "specialist appointments", "urgent visits", "diagnostics", "wellness checks"],
-    highlights: ["Multiple departments", "Appointment desk", "Diagnostics", "Insurance support", "Pharmacy nearby"],
-  },
-  "Shopping Mall": {
-    count: 30,
-    nouns: ["Galleria", "Centre", "Avenue", "Souk", "Plaza", "Festival", "Walk", "Bay", "Gate", "Market"],
-    areas: ["Downtown", "City Centre", "Marina", "Al Wahda", "Al Zahia", "Al Hamra"],
-    bestFor: ["brand shopping", "family outings", "dining", "cinema trips", "weekend errands"],
-    highlights: ["Retail mix", "Food court", "Parking", "Entertainment", "Family facilities"],
-  },
-  "Government Service": {
-    count: 30,
-    nouns: ["Visa", "Municipality", "Identity", "Business", "Transport", "Housing", "Tax", "Labour", "Tourism", "Permit"],
-    areas: ["Online Services", "Customer Centre", "Smart App", "Business Desk", "Resident Services", "Visitor Services"],
-    bestFor: ["resident tasks", "document checks", "business setup", "official updates", "service comparisons"],
-    highlights: ["Official-service style", "Document checklist", "Appointment planning", "Service fee checks", "Status tracking"],
-  },
-  "Bank & Payments": {
-    count: 30,
-    nouns: ["Savings", "Wallet", "Cards", "Remit", "Finance", "Pay", "Exchange", "Credit", "Business Banking", "Digital Bank"],
-    areas: ["Online Banking", "Mobile App", "Branch Services", "SME Desk", "Remittance Hub", "Payment Gateway"],
-    bestFor: ["account comparison", "remittances", "card research", "SME payments", "digital banking"],
-    highlights: ["Fee comparison", "App access", "Support channels", "Security checks", "Branch network"],
-  },
-  "Travel & Transport": {
-    count: 30,
-    nouns: ["Metro", "Airport", "Taxi", "Rental", "Bus", "Intercity", "Parking", "Flight", "Tour", "Marina Transit"],
-    areas: ["Airport Zone", "Metro Link", "City Terminal", "Travel Desk", "Transport Hub", "Waterfront"],
-    bestFor: ["airport transfers", "city movement", "car rentals", "travel planning", "ticket booking"],
-    highlights: ["Route planning", "Booking links", "Timing checks", "Price comparison", "Mobile access"],
-  },
-  Education: {
-    count: 30,
-    nouns: ["Academy", "Institute", "Learning", "Language", "Coding", "Training", "Campus", "Tutors", "Skills", "Business School"],
-    areas: ["Knowledge Park", "University City", "Training Centre", "Online Classes", "School Zone", "Learning Hub"],
-    bestFor: ["course research", "school comparisons", "professional training", "language classes", "online learning"],
-    highlights: ["Program overview", "Admissions checks", "Fee review", "Schedule options", "Certification details"],
-  },
-  "Real Estate": {
-    count: 30,
-    nouns: ["Homes", "Rentals", "Villas", "Apartments", "Property", "Mortgage", "Communities", "Offplan", "Brokerage", "Listings"],
-    areas: ["Marina", "Downtown", "JVC", "Al Reem", "Mirdif", "Saadiyat"],
-    bestFor: ["rental research", "community comparison", "property browsing", "agent discovery", "mortgage planning"],
-    highlights: ["Area comparison", "Budget filters", "Agent contact", "Viewing checks", "Market notes"],
-  },
-};
+  { name: "Time Out Dubai Restaurants", category: "Restaurant", emirate: "Dubai", area: "Dubai", url: "https://www.timeoutdubai.com/restaurants", bestFor: "Dubai dining ideas", highlights: ["Restaurant roundups", "Cuisine guides", "Local editor picks"] },
+  { name: "Visit Dubai Eat and Drink", category: "Restaurant", emirate: "Dubai", area: "Dubai", url: "https://www.visitdubai.com/en/things-to-do/eat-and-drink", bestFor: "official Dubai dining guide", highlights: ["Official dining guide", "Food experiences", "Visitor planning"] },
+  { name: "Tripadvisor UAE Restaurants", category: "Restaurant", emirate: "UAE", area: "UAE-wide", url: "https://www.tripadvisor.com/Restaurants-g294012-United_Arab_Emirates.html", bestFor: "restaurant review comparison", highlights: ["Traveler reviews", "Cuisine filters", "Area comparisons"] },
+  { name: "Zomato UAE", category: "Restaurant", emirate: "UAE", area: "UAE-wide", url: "https://www.zomato.com/uae", bestFor: "menus and restaurant discovery", highlights: ["Menus", "Local listings", "Delivery context"] },
 
-export const businesses: Resource[] = Object.entries(resourceBlueprints).flatMap(
-  ([category, blueprint]) =>
-    Array.from({ length: blueprint.count }, (_, index) => {
-      const emirate = emirates[index % emirates.length];
-      const noun = blueprint.nouns[index % blueprint.nouns.length];
-      const area = blueprint.areas[index % blueprint.areas.length];
-      const categoryLabel = category as ResourceCategory;
-      const sequence = index + 1;
-      const name = `${emirate} ${noun} ${categoryLabel} ${sequence}`;
-      const bestFor = blueprint.bestFor[index % blueprint.bestFor.length];
-      const highlights = [
-        blueprint.highlights[index % blueprint.highlights.length],
-        blueprint.highlights[(index + 2) % blueprint.highlights.length],
-        blueprint.highlights[(index + 4) % blueprint.highlights.length],
-      ];
-      const slug = slugify(name);
+  { name: "Dubai Health Authority", category: "Hospital", emirate: "Dubai", area: "Dubai", url: "https://www.dha.gov.ae/en", bestFor: "official Dubai health information", highlights: ["Official authority", "Health services", "Public information"] },
+  { name: "Department of Health Abu Dhabi", category: "Hospital", emirate: "Abu Dhabi", area: "Abu Dhabi", url: "https://www.doh.gov.ae/en", bestFor: "Abu Dhabi healthcare regulation", highlights: ["Official authority", "Healthcare updates", "Provider information"] },
+  { name: "UAE Health Services Portal", category: "Hospital", emirate: "UAE", area: "UAE-wide", url: "https://u.ae/en/information-and-services/health-and-fitness", bestFor: "UAE government health information", highlights: ["Government source", "Health services", "Resident guidance"] },
+  { name: "Cleveland Clinic Abu Dhabi", category: "Hospital", emirate: "Abu Dhabi", area: "Al Maryah Island", url: "https://www.clevelandclinicabudhabi.ae/", bestFor: "specialist hospital research", highlights: ["Specialist care", "Appointments", "Patient information"] },
 
-      return {
-        name,
-        slug,
-        category: categoryLabel,
-        emirate,
-        area,
-        url: resourceUrls[categoryLabel][index % resourceUrls[categoryLabel].length],
-        rating: (4.1 + (index % 8) / 10).toFixed(1),
-        bestFor,
-        highlights,
-        description: `${name} is a non-vape UAE city-guide article for ${bestFor} in ${area}, ${emirate}.`,
-        articleTitle: `${name}: What to Know Before You Visit`,
-        paragraphs: [
-          `${name} is part of the UAE useful websites list for readers comparing ${categoryLabel.toLowerCase()} options before they visit, book, call, or make a decision.`,
-          `For ${area}, ${emirate}, this guide highlights what the resource is best for, which details deserve a quick check, and where readers can continue their research on a relevant UAE website.`,
-          `Use this page as a quick planning stop before opening maps, checking prices, confirming service areas, reading current reviews, or contacting the provider directly.`,
-        ],
-        checks: ["Official website", "Current opening hours", "Service area", "Prices or fees", "Contact details"],
-      };
-    }),
-);
+  { name: "The Dubai Mall", category: "Shopping Mall", emirate: "Dubai", area: "Downtown Dubai", url: "https://thedubaimall.com/", bestFor: "major mall shopping", highlights: ["Retail directory", "Dining", "Entertainment"] },
+  { name: "Mall of the Emirates", category: "Shopping Mall", emirate: "Dubai", area: "Al Barsha", url: "https://www.malloftheemirates.com/en", bestFor: "shopping and entertainment", highlights: ["Retail directory", "Dining", "Ski Dubai"] },
+  { name: "Yas Island", category: "Shopping Mall", emirate: "Abu Dhabi", area: "Yas Island", url: "https://www.yasisland.com/en", bestFor: "shopping and leisure planning", highlights: ["Attractions", "Shopping", "Family activities"] },
+  { name: "Visit Dubai Shopping", category: "Shopping Mall", emirate: "Dubai", area: "Dubai", url: "https://www.visitdubai.com/en/things-to-do/shopping", bestFor: "official shopping guide", highlights: ["Official guide", "Malls and souks", "Visitor planning"] },
+
+  { name: "UAE Government Portal", category: "Government Service", emirate: "UAE", area: "UAE-wide", url: "https://u.ae/en", bestFor: "official UAE services", highlights: ["Government source", "Resident services", "Business information"] },
+  { name: "GDRFA Dubai", category: "Government Service", emirate: "Dubai", area: "Dubai", url: "https://gdrfad.gov.ae/en", bestFor: "Dubai residency and entry services", highlights: ["Official authority", "Visa services", "Status checks"] },
+  { name: "ICP UAE", category: "Government Service", emirate: "UAE", area: "UAE-wide", url: "https://icp.gov.ae/en/", bestFor: "identity and immigration services", highlights: ["Official authority", "Emirates ID", "Entry services"] },
+  { name: "Dubai Trade", category: "Government Service", emirate: "Dubai", area: "Dubai", url: "https://www.dubaitrade.ae/", bestFor: "Dubai trade and business service checks", highlights: ["Trade services", "Business portals", "Official service access"] },
+
+  { name: "Central Bank of the UAE", category: "Bank & Payments", emirate: "UAE", area: "UAE-wide", url: "https://www.centralbank.ae/en/", bestFor: "banking regulation information", highlights: ["Official regulator", "Financial updates", "Consumer information"] },
+  { name: "Emirates NBD", category: "Bank & Payments", emirate: "UAE", area: "UAE-wide", url: "https://www.emiratesnbd.com/en", bestFor: "personal and business banking", highlights: ["Banking services", "Cards", "Digital banking"] },
+  { name: "ADCB", category: "Bank & Payments", emirate: "UAE", area: "UAE-wide", url: "https://www.adcb.com/en/personal/", bestFor: "personal banking comparison", highlights: ["Accounts", "Cards", "Digital services"] },
+  { name: "Dubai Islamic Bank", category: "Bank & Payments", emirate: "UAE", area: "UAE-wide", url: "https://www.dib.ae/", bestFor: "Islamic banking services", highlights: ["Accounts", "Cards", "Sharia-compliant finance"] },
+
+  { name: "Dubai RTA", category: "Travel & Transport", emirate: "Dubai", area: "Dubai", url: "https://www.rta.ae/wps/portal/rta/ae/home", bestFor: "Dubai transport services", highlights: ["Official transport source", "Metro and taxi", "Parking services"] },
+  { name: "Dubai Airports", category: "Travel & Transport", emirate: "Dubai", area: "Dubai", url: "https://www.dubaiairports.ae/", bestFor: "airport travel information", highlights: ["Flight information", "Airport services", "Travel planning"] },
+  { name: "Etihad Rail", category: "Travel & Transport", emirate: "UAE", area: "UAE-wide", url: "https://www.etihadrail.ae/", bestFor: "UAE rail project information", highlights: ["Official rail source", "Network updates", "Transport planning"] },
+  { name: "Etihad Airways", category: "Travel & Transport", emirate: "Abu Dhabi", area: "Abu Dhabi", url: "https://www.etihad.com/", bestFor: "flight booking and travel planning", highlights: ["Flights", "Travel updates", "Loyalty services"] },
+
+  { name: "Ministry of Education UAE", category: "Education", emirate: "UAE", area: "UAE-wide", url: "https://www.moe.gov.ae/en/pages/home.aspx", bestFor: "official education information", highlights: ["Government source", "Schools and policy", "Student services"] },
+  { name: "ADEK Abu Dhabi", category: "Education", emirate: "Abu Dhabi", area: "Abu Dhabi", url: "https://www.adek.gov.ae/", bestFor: "Abu Dhabi education information", highlights: ["Official authority", "School information", "Education services"] },
+  { name: "CAA UAE", category: "Education", emirate: "UAE", area: "UAE-wide", url: "https://www.caa.ae/", bestFor: "higher education accreditation", highlights: ["Accreditation", "University checks", "Official source"] },
+  { name: "Khalifa University", category: "Education", emirate: "Abu Dhabi", area: "Abu Dhabi", url: "https://www.ku.ac.ae/", bestFor: "university program research", highlights: ["Admissions", "Programs", "Research"] },
+
+  { name: "Dubai Land Department", category: "Real Estate", emirate: "Dubai", area: "Dubai", url: "https://dubailand.gov.ae/en/", bestFor: "official Dubai property information", highlights: ["Government source", "Property services", "Market information"] },
+  { name: "Bayut UAE", category: "Real Estate", emirate: "UAE", area: "UAE-wide", url: "https://www.bayut.com/", bestFor: "property browsing", highlights: ["Listings", "Area guides", "Market notes"] },
+  { name: "Property Finder UAE", category: "Real Estate", emirate: "UAE", area: "UAE-wide", url: "https://www.propertyfinder.ae/", bestFor: "property search comparison", highlights: ["Listings", "Filters", "Agent contacts"] },
+  { name: "Dubizzle Property", category: "Real Estate", emirate: "UAE", area: "UAE-wide", url: "https://www.dubizzle.com/property-for-rent/", bestFor: "classified property listings", highlights: ["Rentals", "Sales", "Local listings"] },
+];
+
+export const businesses: Resource[] = realResourceEntries.map((entry, index) => {
+  const slug = slugify(entry.name);
+
+  return {
+    ...entry,
+    slug,
+    rating: (4.3 + (index % 6) / 10).toFixed(1),
+    description: `${entry.name} is a real UAE ${entry.category.toLowerCase()} resource for ${entry.bestFor} in ${entry.area}.`,
+    articleTitle: `${entry.name}: What to Know Before You Visit`,
+    paragraphs: [
+      `${entry.name} is included in this UAE useful websites list because it is an actual resource readers can open for ${entry.bestFor}.`,
+      `For ${entry.area}, this guide explains why the website is useful, what to verify before relying on it, and how it fits into the wider ${entry.category.toLowerCase()} category.`,
+      "Before booking, visiting, applying, shopping, or making a decision, confirm current details directly on the official website.",
+    ],
+    checks: ["Official website", "Current opening hours or service status", "Location or coverage area", "Prices, fees, or booking terms", "Contact details"],
+  };
+});
 
 export const categories: ResourceCategory[] = [
   "Hotel",

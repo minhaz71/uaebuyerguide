@@ -181,6 +181,15 @@ export default async function BusinessPage({ params }: BusinessPageProps) {
         {business.paragraphs.map((paragraph) => (
           <p key={paragraph}>{paragraph}</p>
         ))}
+        {business.contextualLink ? (
+          <p>
+            For broader reading related to this topic, see{" "}
+            <a href={business.contextualLink.href} target="_blank" rel="noreferrer">
+              {business.contextualLink.label}
+            </a>
+            .
+          </p>
+        ) : null}
       </section>
 
       <section className="detail-grid">
