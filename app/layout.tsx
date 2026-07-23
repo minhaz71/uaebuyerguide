@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { SiteFooter } from "./SiteFooter";
+import { siteUrl } from "./site";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : "https://uae-buyer-guide.vercel.app",
-  ),
+  metadataBase: new URL(siteUrl),
   title: "UAE Buyer Guide",
   description:
     "Compare UAE online stores, fast delivery websites, specialty shopping, adult specialty retail, vape and pod stores, TEREA / HEETS shops, news portals, and local resource pages.",
@@ -47,7 +45,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning>{children}</body>
+      <body suppressHydrationWarning>
+        {children}
+        <SiteFooter />
+      </body>
     </html>
   );
 }

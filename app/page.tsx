@@ -11,11 +11,50 @@ import {
   resourceCategorySlug,
 } from "./data";
 import { GuideExplorer } from "./GuideExplorer";
+import { siteUrl } from "./site";
 
 export const metadata: Metadata = {
   title: "UAE Buyer Guide | Comparison Guide and Useful Websites List",
   description:
     "Compare useful UAE websites before you visit, including stores, fast delivery, specialty shopping, adult specialty retail, vape and pod stores, TEREA / HEETS shops, news portals, and 300 non-vape local resource pages.",
+  alternates: {
+    canonical: "/",
+  },
+  keywords: [
+    "UAE buyer guide",
+    "UAE useful websites",
+    "Dubai online store reviews",
+    "UAE website comparison",
+    "best UAE websites guide",
+    "UAE local resource hub",
+  ],
+  openGraph: {
+    title: "UAE Buyer Guide | Comparison Guide and Useful Websites List",
+    description:
+      "Compare useful UAE websites before you visit, including shopping, delivery, specialty retail, news portals, and local resource pages.",
+    url: "/",
+    type: "website",
+    siteName: "UAE Buyer Guide",
+    images: ["/og.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "UAE Buyer Guide | Comparison Guide and Useful Websites List",
+    description:
+      "Compare useful UAE websites before you visit, including shopping, delivery, specialty retail, news portals, and local resource pages.",
+    images: ["/og.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export default function Home() {
@@ -34,11 +73,46 @@ export default function Home() {
       ...categories,
     ],
     url: [
-      "#reviews",
-      "#guides",
-      "#resource-categories",
-      ...guideCategories.map((category) => `/category/${categorySlug(category)}`),
-      ...categories.map((category) => `/resources/${resourceCategorySlug(category)}`),
+      `${siteUrl}/#reviews`,
+      `${siteUrl}/#guides`,
+      `${siteUrl}/#resource-categories`,
+      ...guideCategories.map((category) => `${siteUrl}/category/${categorySlug(category)}`),
+      ...categories.map((category) => `${siteUrl}/resources/${resourceCategorySlug(category)}`),
+    ],
+  };
+  const homeJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": `${siteUrl}#website`,
+        url: siteUrl,
+        name: "UAE Buyer Guide",
+        description:
+          "A UAE buyer guide and comparison site for useful websites, shopping, delivery, news, specialty retail, and local resources.",
+        inLanguage: "en",
+      },
+      {
+        "@type": "Organization",
+        "@id": `${siteUrl}#organization`,
+        name: "UAE Buyer Guide",
+        url: siteUrl,
+        logo: `${siteUrl}/favicon.svg`,
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${siteUrl}#webpage`,
+        url: siteUrl,
+        name: "UAE Buyer Guide | Comparison Guide and Useful Websites List",
+        description:
+          "Compare useful UAE websites before you visit, including shopping, delivery, specialty retail, news portals, and local resource pages.",
+        isPartOf: {
+          "@id": `${siteUrl}#website`,
+        },
+        about: {
+          "@id": `${siteUrl}#organization`,
+        },
+      },
     ],
   };
 
@@ -47,6 +121,10 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(navigationJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }}
       />
       <section className="hero">
         <nav className="topbar" aria-label="Main navigation">
@@ -236,38 +314,6 @@ export default function Home() {
 
       <GuideExplorer />
 
-      <footer className="site-footer">
-        <div className="footer-grid">
-          <div className="footer-copy">
-            <span className="eyebrow">Source references</span>
-            <h2>UAE Buyer Guide uses public reference websites for discovery context.</h2>
-            <p>
-              For the most accurate business details, opening hours, ownership information,
-              category updates, or correction requests, contact the original websites directly.
-            </p>
-          </div>
-
-          <div className="footer-links" aria-label="Reference websites">
-            <a href="https://uaeshopping.pages.dev/" target="_blank" rel="noreferrer">
-              <strong>UAE Shopping</strong>
-              <span>Shopping website reference</span>
-            </a>
-            <a href="https://uaedirectory.pages.dev/" target="_blank" rel="noreferrer">
-              <strong>UAE Directory Hub</strong>
-              <span>Shopping, lifestyle, healthcare, and specialty business websites</span>
-            </a>
-            <a href="https://businesshub.pages.dev/" target="_blank" rel="noreferrer">
-              <strong>UAE Business Directory - Hemdox</strong>
-              <span>Business directory reference</span>
-            </a>
-          </div>
-        </div>
-
-        <div className="footer-bottom">
-          <strong>UAE Buyer Guide</strong>
-          <span>Compare useful UAE websites before you visit.</span>
-        </div>
-      </footer>
     </main>
   );
 }

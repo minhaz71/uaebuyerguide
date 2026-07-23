@@ -7,10 +7,7 @@ import {
   guideSites,
   resourceCategorySlug,
 } from "./data";
-
-const siteUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : "https://uae-buyer-guide.vercel.app";
+import { siteUrl } from "./site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

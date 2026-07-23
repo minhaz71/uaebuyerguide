@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { businesses, getBusinessBySlug, resourceCategorySlug } from "../../data";
+import { siteUrl } from "../../site";
 
 type BusinessPageProps = {
   params: Promise<{
@@ -22,9 +23,49 @@ export async function generateMetadata({ params }: BusinessPageProps): Promise<M
     };
   }
 
+  const title = `${business.articleTitle} | UAE Buyer Guide`;
+  const description = business.description;
+
   return {
-    title: `${business.name} | UAE Buyer Guide`,
-    description: business.description,
+    title,
+    description,
+    alternates: {
+      canonical: `/business/${business.slug}`,
+    },
+    keywords: [
+      business.name,
+      `${business.category} UAE`,
+      `${business.category} ${business.emirate}`,
+      `${business.area} ${business.emirate}`,
+      "UAE city guide",
+      "UAE local resource hub",
+      "useful UAE websites",
+    ],
+    openGraph: {
+      title,
+      description,
+      url: `/business/${business.slug}`,
+      type: "article",
+      siteName: "UAE Buyer Guide",
+      images: ["/og.png"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/og.png"],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
+    },
   };
 }
 
@@ -48,9 +89,81 @@ export default async function BusinessPage({ params }: BusinessPageProps) {
   const related = businesses
     .filter((item) => item.category === business.category && item.slug !== business.slug)
     .slice(0, 3);
+  const canonicalUrl = `${siteUrl}/business/${business.slug}`;
+  const resourceCategoryUrl = `${siteUrl}/resources/${resourceCategorySlug(business.category)}`;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${canonicalUrl}#webpage`,
+        url: canonicalUrl,
+        name: `${business.articleTitle} | UAE Buyer Guide`,
+        description: business.description,
+        isPartOf: {
+          "@type": "WebSite",
+          name: "UAE Buyer Guide",
+          url: siteUrl,
+        },
+      },
+      {
+        "@type": "Article",
+        "@id": `${canonicalUrl}#article`,
+        headline: business.articleTitle,
+        description: business.description,
+        articleSection: business.category,
+        keywords: [
+          business.name,
+          business.category,
+          business.emirate,
+          business.area,
+          business.bestFor,
+        ].join(", "),
+        author: {
+          "@type": "Organization",
+          name: "UAE Buyer Guide",
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "UAE Buyer Guide",
+        },
+        mainEntityOfPage: {
+          "@id": `${canonicalUrl}#webpage`,
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${canonicalUrl}#breadcrumb`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "UAE Buyer Guide",
+            item: siteUrl,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: `${business.category} UAE City Guide`,
+            item: resourceCategoryUrl,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: business.name,
+            item: canonicalUrl,
+          },
+        ],
+      },
+    ],
+  };
 
   return (
     <main className="detail-shell">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Link href="/#resource-hub" className="back-link">Back to resource hub</Link>
 
       <section className="detail-hero">

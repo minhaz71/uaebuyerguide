@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { categorySlug, getGuideSiteBySlug, guideSites } from "../../data";
+import { siteUrl } from "../../site";
 
 type ReviewPageProps = {
   params: Promise<{
@@ -88,11 +89,8 @@ export default async function ReviewPage({ params }: ReviewPageProps) {
     site.seoDescription ??
     `${site.name}: ${site.bestFor} Compare pros, useful details, things to check, and visit links.`;
   const canonicalPath = `/reviews/${site.slug}`;
-  const siteOrigin = process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "https://uae-buyer-guide.vercel.app";
-  const canonicalUrl = `${siteOrigin}${canonicalPath}`;
-  const categoryUrl = `${siteOrigin}/category/${categorySlug(site.category)}`;
+  const canonicalUrl = `${siteUrl}${canonicalPath}`;
+  const categoryUrl = `${siteUrl}/category/${categorySlug(site.category)}`;
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -105,7 +103,7 @@ export default async function ReviewPage({ params }: ReviewPageProps) {
         isPartOf: {
           "@type": "WebSite",
           name: "UAE Buyer Guide",
-          url: siteOrigin,
+          url: siteUrl,
         },
         about: {
           "@type": "Organization",
@@ -140,7 +138,7 @@ export default async function ReviewPage({ params }: ReviewPageProps) {
             "@type": "ListItem",
             position: 1,
             name: "UAE Buyer Guide",
-            item: siteOrigin,
+            item: siteUrl,
           },
           {
             "@type": "ListItem",

@@ -758,28 +758,19 @@ li {
 .footer-links a {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 18px;
-  display: grid;
-  gap: 8px;
-  padding: 18px;
+  border-radius: 8px;
+  color: #ffffff;
+  display: block;
+  font-size: 16px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  padding: 16px 18px;
   transition: background 160ms ease, transform 160ms ease;
 }
 
 .footer-links a:hover {
   background: rgba(255, 255, 255, 0.13);
   transform: translateY(-1px);
-}
-
-.footer-links strong {
-  display: block;
-  font-size: 18px;
-  line-height: 1.2;
-}
-
-.footer-links span {
-  color: rgba(255, 255, 255, 0.68);
-  display: block;
-  line-height: 1.45;
 }
 
 .footer-bottom {

@@ -1,16 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { categorySlug, getGuideCategoryBySlug, guideCategories, guideSites } from "../../data";
+import { siteUrl } from "../../site";
 
 type CategoryPageProps = {
   params: Promise<{
     slug: string;
   }>;
 };
-
-const siteOrigin = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : "https://uae-buyer-guide.vercel.app";
 
 export async function generateStaticParams() {
   return guideCategories.map((category) => ({ slug: categorySlug(category) }));
@@ -26,9 +23,48 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
     };
   }
 
+  const title = `${category} | UAE Buyer Guide`;
+  const description = `Compare useful UAE websites in ${category}. Read pros, best-for notes, things to check, and visit links.`;
+
   return {
-    title: `${category} | UAE Buyer Guide`,
-    description: `Compare useful UAE websites in ${category}. Read pros, best-for notes, things to check, and visit links.`,
+    title,
+    description,
+    alternates: {
+      canonical: `/category/${slug}`,
+    },
+    keywords: [
+      category,
+      `${category} UAE`,
+      `${category} Dubai`,
+      "UAE buyer guide",
+      "UAE website comparison",
+      "useful UAE websites",
+    ],
+    openGraph: {
+      title,
+      description,
+      url: `/category/${slug}`,
+      type: "website",
+      siteName: "UAE Buyer Guide",
+      images: ["/og.png"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/og.png"],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
+    },
   };
 }
 
@@ -50,7 +86,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   }
 
   const sites = guideSites.filter((site) => site.category === category);
-  const canonicalUrl = `${siteOrigin}/category/${slug}`;
+  const canonicalUrl = `${siteUrl}/category/${slug}`;
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -63,7 +99,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         isPartOf: {
           "@type": "WebSite",
           name: "UAE Buyer Guide",
-          url: siteOrigin,
+          url: siteUrl,
         },
         mainEntity: {
           "@type": "ItemList",
@@ -72,7 +108,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             "@type": "ListItem",
             position: index + 1,
             name: site.name,
-            url: `${siteOrigin}/reviews/${site.slug}`,
+            url: `${siteUrl}/reviews/${site.slug}`,
           })),
         },
       },
@@ -84,7 +120,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             "@type": "ListItem",
             position: 1,
             name: "UAE Buyer Guide",
-            item: siteOrigin,
+            item: siteUrl,
           },
           {
             "@type": "ListItem",

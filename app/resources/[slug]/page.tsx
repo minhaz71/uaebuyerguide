@@ -6,16 +6,13 @@ import {
   getResourceCategoryBySlug,
   resourceCategorySlug,
 } from "../../data";
+import { siteUrl } from "../../site";
 
 type ResourceCategoryPageProps = {
   params: Promise<{
     slug: string;
   }>;
 };
-
-const siteOrigin = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : "https://uae-buyer-guide.vercel.app";
 
 export async function generateStaticParams() {
   return categories.map((category) => ({ slug: resourceCategorySlug(category) }));
@@ -94,7 +91,7 @@ export default async function ResourceCategoryPage({ params }: ResourceCategoryP
   }
 
   const resources = businesses.filter((business) => business.category === category);
-  const canonicalUrl = `${siteOrigin}/resources/${slug}`;
+  const canonicalUrl = `${siteUrl}/resources/${slug}`;
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -107,7 +104,7 @@ export default async function ResourceCategoryPage({ params }: ResourceCategoryP
         isPartOf: {
           "@type": "WebSite",
           name: "UAE Buyer Guide",
-          url: siteOrigin,
+          url: siteUrl,
         },
         mainEntity: {
           "@type": "ItemList",
@@ -116,7 +113,7 @@ export default async function ResourceCategoryPage({ params }: ResourceCategoryP
             "@type": "ListItem",
             position: index + 1,
             name: resource.name,
-            url: `${siteOrigin}/business/${resource.slug}`,
+            url: `${siteUrl}/business/${resource.slug}`,
           })),
         },
       },
@@ -128,13 +125,13 @@ export default async function ResourceCategoryPage({ params }: ResourceCategoryP
             "@type": "ListItem",
             position: 1,
             name: "UAE Buyer Guide",
-            item: siteOrigin,
+            item: siteUrl,
           },
           {
             "@type": "ListItem",
             position: 2,
             name: "Local Resource Hub",
-            item: `${siteOrigin}/#resource-hub`,
+            item: `${siteUrl}/#resource-hub`,
           },
           {
             "@type": "ListItem",
