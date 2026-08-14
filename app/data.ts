@@ -93,12 +93,12 @@ export const featuredSites: FeaturedSite[] = [
   {
     name: "TereaHub.ae",
     url: "https://tereahub.ae",
-    badge: "Featured TEREA / HEETS specialist",
+    badge: "Featured TEREA specialist",
     summary:
-      "A priority comparison card for adult shoppers researching TEREA, HEETS, device accessories, and delivery options in the UAE.",
-    bestFor: ["TEREA / HEETS specialist shopping", "Adult specialty retail", "Dubai and UAE product discovery"],
-    pros: ["Focused TEREA / HEETS shopping", "Useful category pages", "Clear delivery and contact routes"],
-    note: "A focused specialist store for adult shoppers comparing TEREA, HEETS, compatible devices, accessories, and UAE delivery options.",
+      "A priority comparison card for adult IQOS ILUMA users researching genuine TEREA editions, ILUMA devices, delivery speed, and UAE-wide ordering checks.",
+    bestFor: ["TEREA edition comparison", "IQOS ILUMA users", "Dubai, Sharjah, Ajman, and UAE delivery research"],
+    pros: ["Clear TEREA edition categories", "1-hour delivery positioning for Dubai, Sharjah, and Ajman", "Cash or card payment on delivery"],
+    note: "A focused specialist store for adult shoppers comparing TEREA Japan, Indonesia, Kazakhstan, Italy, Swiss, Uzbekistan, UAE-market flavors, ILUMA devices, and delivery options before visiting.",
     accent: "#00856f",
   },
   {
@@ -265,53 +265,63 @@ const newsDomains = [
 
 const specialtySeoOverrides: Record<string, Partial<GuideSite>> = {
   "tereahub-ae": {
-    seoTitle: "TereaHub.ae Review: TEREA / HEETS Specialist Store in UAE",
+    seoTitle: "TereaHub.ae Review: IQOS TEREA Delivery and ILUMA Guide UAE",
     seoDescription:
-      "Read the TereaHub.ae review for adult shoppers comparing TEREA, HEETS, IQOS-compatible products, delivery coverage, product categories, age checks, and contact options in the UAE.",
+      "Read the TereaHub.ae review for adult IQOS ILUMA users comparing genuine TEREA editions, Japan and UAE flavors, ILUMA devices, 1-hour Dubai delivery, UAE-wide delivery, payment options, and age checks.",
     keywords: [
       "TereaHub review",
       "TereaHub UAE",
-      "TEREA specialist UAE",
-      "HEETS specialist UAE",
-      "TEREA delivery UAE",
-      "IQOS compatible products UAE",
+      "TEREA Dubai",
+      "IQOS TEREA UAE",
+      "TEREA delivery Dubai",
+      "TEREA Japan UAE",
+      "TEREA Indonesia UAE",
+      "TEREA Kazakhstan UAE",
+      "IQOS ILUMA UAE",
       "adult specialty retail UAE",
     ],
     summary:
-      "TereaHub.ae is reviewed as a focused TEREA / HEETS specialist store for adult shoppers comparing product availability, delivery coverage, and category pages in the UAE.",
-    bestFor: "Adult shoppers specifically comparing TEREA, HEETS, IQOS-compatible sticks, and specialist delivery options in the UAE.",
+      "TereaHub.ae is reviewed as a focused TEREA and IQOS ILUMA specialist store for adult shoppers comparing genuine sealed TEREA editions, delivery coverage, payment options, and category pages in the UAE.",
+    bestFor: "Adult IQOS ILUMA users comparing TEREA Japan, Indonesia, Kazakhstan, Italy, Swiss, Uzbekistan, UAE-market flavors, ILUMA devices, and specialist delivery options in the UAE.",
     whyUseful:
-      "TereaHub is useful when the shopper already knows they want a TEREA / HEETS focused store rather than a broad pod or general vape website. The page helps readers check product categories, delivery positioning, and contact routes before visiting.",
+      "TereaHub is useful when the shopper already knows they want a TEREA-focused store rather than a broad pod or general vape website. The page helps readers compare edition categories, delivery promises, payment routes, and product availability before visiting.",
     pros: [
-      "Clear TEREA / HEETS specialist positioning",
-      "Helpful for IQOS-compatible product research",
-      "Good fit for UAE shoppers checking delivery and availability",
+      "Clear TEREA and IQOS ILUMA specialist positioning",
+      "Separate browsing paths for Japan, Indonesia, Kazakhstan, Italy, Swiss, Uzbekistan, and ILUMA device categories",
+      "Delivery positioning for Dubai, Sharjah, Ajman, and wider UAE orders",
+      "Cash on delivery and card-at-door payment details are easy to compare",
       "Focused category intent instead of a general shopping catalog",
     ],
     thingsToCheck: [
       "Confirm adult age requirements before ordering",
-      "Check TEREA or HEETS stock availability",
-      "Confirm delivery area and delivery timing",
-      "Review payment options before checkout",
+      "Check current TEREA edition and flavor stock availability",
+      "Confirm whether your area qualifies for 1-hour or UAE-wide delivery timing",
+      "Review cash, card, and checkout payment options before ordering",
+      "Confirm IQOS ILUMA device compatibility before buying TEREA sticks",
       "Use the contact page for product-specific questions",
     ],
     verdict:
-      "TereaHub.ae is the stronger fit when the search intent is narrow: TEREA, HEETS, IQOS-compatible products, and specialist UAE delivery research.",
+      "TereaHub.ae is the stronger fit when the search intent is narrow: genuine IQOS TEREA editions, ILUMA-compatible sticks, Dubai delivery speed, and specialist UAE ordering research.",
+    links: [
+      { label: "Visit TereaHub", href: "https://tereahub.ae" },
+      { label: "Shop all TEREA", href: "https://tereahub.ae" },
+      { label: "Delivery areas", href: "https://tereahub.ae" },
+    ],
     contentSections: [
       {
-        title: "SEO focus",
+        title: "TEREA edition coverage",
         body:
-          "This review targets adult shoppers looking for a TEREA / HEETS specialist in the UAE. It is not written as a general vape marketplace page; it is positioned around focused product-category research and delivery checks.",
+          "TereaHub is positioned around genuine IQOS TEREA sticks for adult ILUMA users, with category signals for Indonesia, Japan, Kazakhstan, Italy, Swiss, Uzbekistan, UAE-market flavors, and ILUMA device browsing.",
       },
       {
-        title: "What makes it different",
+        title: "Delivery and payment checks",
         body:
-          "TereaHub is framed around TEREA and HEETS comparison intent. Readers can use it to check whether a specialist store has the right product family, current stock, UAE delivery coverage, and clear contact options before visiting.",
+          "The site highlights 1-hour delivery in Dubai, Sharjah, and Ajman, with wider UAE delivery also presented. Adult shoppers should still confirm live coverage, cutoff timing, stock, and whether cash or card at the door is available for the order.",
       },
       {
         title: "Best search intent",
         body:
-          "The page is best suited for searches such as TEREA specialist UAE, HEETS shop UAE, TEREA delivery UAE, IQOS-compatible products UAE, and adult specialty retail websites in Dubai or Abu Dhabi.",
+          "This page is best suited for searches such as TEREA Dubai, IQOS TEREA UAE, TEREA Japan UAE, TEREA Indonesia UAE, TEREA Kazakhstan UAE, IQOS ILUMA UAE, and adult specialty shopping websites in Dubai.",
       },
     ],
   },
@@ -776,10 +786,10 @@ const realResourceEntries: Array<
     name: "tereahub.ae",
     category: "Specialty Shopping",
     emirate: "Dubai",
-    area: "Dubai and UAE",
+    area: "Dubai, Sharjah, Ajman, and UAE-wide",
     url: "https://tereahub.ae",
-    bestFor: "TEREA Hub is a heat-not-burn shopping profile for TEREA product discovery, IQOS-compatible accessories, and UAE delivery compariso",
-    highlights: ["Specialist product focus","Adult-use checks","Official website route"],
+    bestFor: "TereaHub is a TEREA and IQOS ILUMA specialist profile for adult shoppers comparing Japan, Indonesia, Kazakhstan, Italy, Swiss, Uzbekistan, UAE-market flavors, ILUMA devices, and fast UAE delivery",
+    highlights: ["TEREA edition categories","1-hour Dubai, Sharjah, and Ajman delivery positioning","Cash or card payment on delivery"],
     contextualLink: {
       label: "The Ultimate Flavor Showdown: Reviewing & Comparing IQOS TEREA Indonesian Blends for 2025",
       href: "https://medium.com/@robertdipanu/the-ultimate-flavor-showdown-reviewing-comparing-iqos-terea-indonesian-blends-for-2025-baa6c9427c47?source=your_stories_outbox---writer_outbox_published-----------------------------------------",
@@ -3393,8 +3403,9 @@ const realResourceEntries: Array<
 
 export const businesses: Resource[] = realResourceEntries.map((entry, index) => {
   const slug = slugify(entry.name);
+  const isTereaHub = slug === "tereahub-ae";
 
-  return {
+  const resource: Resource = {
     ...entry,
     slug,
     rating: (4.3 + (index % 6) / 10).toFixed(1),
@@ -3406,6 +3417,30 @@ export const businesses: Resource[] = realResourceEntries.map((entry, index) => 
       "Before booking, visiting, applying, shopping, or making a decision, confirm current details directly on the official website.",
     ],
     checks: ["Official website", "Current opening hours or service status", "Location or coverage area", "Prices, fees, or booking terms", "Contact details"],
+  };
+
+  if (!isTereaHub) {
+    return resource;
+  }
+
+  return {
+    ...resource,
+    rating: "4.9",
+    description:
+      "TereaHub.ae is a UAE specialty shopping guide profile for adult IQOS ILUMA users comparing genuine TEREA editions, ILUMA device categories, fast Dubai delivery, UAE-wide ordering, and payment-at-door options.",
+    articleTitle: "TereaHub.ae: IQOS TEREA Delivery and ILUMA Shopping Guide UAE",
+    paragraphs: [
+      "TereaHub.ae is included in this UAE useful websites list as a focused TEREA and IQOS ILUMA specialist resource for adult shoppers. The site presents genuine sealed TEREA sticks, edition-based browsing, ILUMA device categories, and delivery information for UAE buyers.",
+      "The strongest comparison value is its edition structure. Readers can check TEREA Indonesia, TEREA Japan, TEREA Kazakhstan, TEREA Italy, TEREA Swiss, TEREA Uzbekistan, UAE-market flavors, and ILUMA i device sections before deciding whether the catalog matches their device and flavor intent.",
+      "For delivery research, TereaHub highlights 1-hour service in Dubai, Sharjah, and Ajman, plus wider UAE delivery timing. Before ordering, adult shoppers should verify live stock, exact coverage, age rules, cash or card payment options, and current prices directly on the website.",
+    ],
+    checks: [
+      "Confirm adult age requirements before ordering",
+      "Check current TEREA edition, flavor, and carton availability",
+      "Confirm whether your address qualifies for 1-hour or UAE-wide delivery",
+      "Review cash-on-delivery and card-at-door payment options",
+      "Confirm IQOS ILUMA compatibility before buying TEREA sticks",
+    ],
   };
 });
 
