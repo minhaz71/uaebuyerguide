@@ -848,6 +848,10 @@ const realResourceEntries: Array<
     url: "https://eightvape.com",
     bestFor: "USA-based vape store offering discounts on popular adult vape brands and accessories",
     highlights: ["Specialist product focus","Adult-use checks","Official website route"],
+    contextualLink: {
+      label: "IQOS TEREA vs JUUL fast delivery across the UAE",
+      href: "https://vaporwhirl.com/iqos-terea-vs-juul-fast-delivery-across-the-uae/",
+    },
   },
   {
     name: "elementvape.com",
@@ -883,6 +887,10 @@ const realResourceEntries: Array<
     url: "https://vapeking.com.au",
     bestFor: "Australian vape shop with e-liquids, devices, accessories, and adult-use products",
     highlights: ["Specialist product focus","Adult-use checks","Official website route"],
+    contextualLink: {
+      label: "RELX vs IQOS ILUMA 2026 Dubai buyer guide",
+      href: "https://vapexplore.com/relx-vs-iqos-iluma-a-2026-dubai-buyers-guide/",
+    },
   },
   {
     name: "ozvapour.com",
@@ -892,6 +900,10 @@ const realResourceEntries: Array<
     url: "https://ozvapour.com",
     bestFor: "Australian vaping review and recommendation website for product research",
     highlights: ["Specialist product focus","Adult-use checks","Official website route"],
+    contextualLink: {
+      label: "RELX vs IQOS TEREA fast delivery across the UAE",
+      href: "https://vapegrove.com/relx-vs-iqos-terea-fast-delivery-across-the-uae/",
+    },
   },
   {
     name: "vape360.com",
@@ -914,6 +926,10 @@ const realResourceEntries: Array<
     url: "https://canadavapes.com",
     bestFor: "Canadian vape shop with a long-running retail history and online ordering",
     highlights: ["Specialist product focus","Adult-use checks","Official website route"],
+    contextualLink: {
+      label: "IQOS TEREA vs JUUL routine comparison",
+      href: "https://neovapex.com/iqos-terea-vs-juul-which-one-fits-your-routine/",
+    },
   },
   {
     name: "myvapery.com",
@@ -1024,6 +1040,10 @@ const realResourceEntries: Array<
     url: "https://vaperempire.com.au",
     bestFor: "Australian vape pen and kit website with a premium product focus",
     highlights: ["Specialist product focus","Adult-use checks","Official website route"],
+    contextualLink: {
+      label: "IQOS TEREA vs JUUL complete switching guide",
+      href: "https://vapezone360.com/iqos-terea-vs-juul-your-complete-switching-guide/",
+    },
   },
   {
     name: "smokecartel.com",
